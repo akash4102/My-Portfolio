@@ -84,37 +84,6 @@ modalCloses.forEach((modalCloses)=>{
         })
     })
 })
-/*==================== PORTFOLIO SWIPER  ====================*/
-let swiperPortfolio = new Swiper(".portfolio__container", {
-    cssMode: true,
-    loop: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-});
-
-/*==================== TESTIMONIAL ====================*/
-let swiperTestimonial = new Swiper(".testimonial__container", {
-    loop: true,
-    grabCursor:true,
-    spaceBetween: 48,
-
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-    breakpoints:{
-        568:{
-            slidesPerView: 2,
-        }
-    }
-});
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections=document.querySelectorAll('section[id]')
@@ -165,26 +134,3 @@ const selectedIcon=localStorage.getItem('selected-icon')
 //we obtain the current theme that the interface has by validating the dark-theme 
 const getCurrentTheme = ()=> document.body.classList.contains(darktheme)? 'dark':'light'
 const getCurrentIcon = ()=> themeButton.classList.contains(iconTheme) ? 'uil-moon':'uil-sun'
-
-//we validate if the user previously chose a topic
-if(selectedTheme){
-    //if the validation is fulfilled, we ask what the issue was to know if we acticated
-    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-    themeButton.classList[selectedIcon==='uil-moon' ? 'add' : 'remove'](iconTheme)
-}
-//Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click',()=>{
-    //add or remove the dark/ icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
-    //we save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme',getCurrentTheme())
-    localStorage.setItem('selected-icon',getCurrentIcon())
-})
-// scroll revel animation 
-const sr=scrollReveal({
-    origin:'top',
-    distance: '30px',
-    duration: 2000,
-    reset:true
-});
